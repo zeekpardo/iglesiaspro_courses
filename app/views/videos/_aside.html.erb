@@ -1,0 +1,12 @@
+<div class="overflow-y-auto border-r border-gray-200 bg-white px-6">
+  <nav class="flex flex-1 flex-col">
+        <ul role="list" class="-mx-2 space-y-1">
+              <% @videos.each do |video| %>
+                <li class="mb-2">
+                  <%= link_to video.name, course_video_path(@course, video), class: "hover:bg-gray-50 block rounded-md py-2 pr-2 pl-9 text-sm leading-6 text-gray-700" %>
+                </li>
+              <% end %>
+            </li>
+        </ul>
+  </nav>
+</div>

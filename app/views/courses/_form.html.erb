@@ -1,0 +1,41 @@
+<%= form_with(model: course, class: "mx-auto mt-16 max-w-xl sm:mt-20") do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation" class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+        <% course.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="sm:col-span-2">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="sm:col-span-2">
+    <%= form.label :description  %>
+    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="sm:col-span-2">
+    <%= form.label :image_file %>
+    <%= form.text_field :image_file, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="mt-10">
+    <%= form.submit class: "block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+  </div>
+   <div class="inline-block mt-10">
+    <%= link_to "Back to courses", courses_path, class: "block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+  </div>  
+<% end %>
+
+
+
+
+
+

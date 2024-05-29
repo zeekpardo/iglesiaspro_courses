@@ -1,0 +1,13 @@
+<div class="container divide-gray-200 rounded-lg bg-white text-center">
+      <h3 class=" text-3xl font-medium text-gray-900"><%= course.name %></h3>
+      <%= image_tag course.image_file %>
+      <dd class="text-sm text-gray-500"><%= course.description %></dd>  
+        <dd class="">
+        <% if course.videos.any? %>
+          <span class="items-center rounded-full bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+            <%= link_to "Iniciar curso", course_video_path(course, course.videos.first) %></span>
+        <% end %>
+      </dd>
+</div>
+
+

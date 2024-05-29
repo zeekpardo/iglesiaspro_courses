@@ -1,0 +1,18 @@
+<!-- app/views/users/edit.html.erb -->
+<h1>Edit User</h1>
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin, 'Admin Status' %>
+    <%= f.check_box :admin %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update User' %>
+  </div>
+<% end %>
