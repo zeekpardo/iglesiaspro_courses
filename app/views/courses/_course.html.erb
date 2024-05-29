@@ -2,14 +2,16 @@
 <% @courses.each do |course| %>
     <article class="flex flex-col items-start justify-between">
     
-      <div class="relative w-full">
-          <%= image_tag course.image_file, alt: 'Logo', class: 'aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]' %> 
-        <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-      </div>
+        <% if course.main_image.attached? %>
+          <%= image_tag course.main_image, alt: 'image', class: 'aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]' %>
+        <% else %>
+          <%= image_tag 'placeholder.png', alt: 'default image', class: 'aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]' %>
+        <% end %>
+
+
+
       <div class="max-w-xl">
-        <div class="mt-8 flex items-center gap-x-4 text-xs">
-          
-          
+        <div class="mt-8 flex items-center gap-x-4 text-xs">          
         </div>
         <div class="group relative">
           <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
