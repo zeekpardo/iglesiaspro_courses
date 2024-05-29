@@ -4,7 +4,7 @@
     
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
+          <span class="sr-only">IglesiasPro</span>
           <img class="h-8 w-auto" src="https://iglesiaspro.com/hubfs/Icon_%20Iglesias%20Pro.png" alt="">
         </a>
       </div>
@@ -18,8 +18,8 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
         <%= link_to 'Home', root_path, class: "text-sm font-semibold leading-6 text-black" %>
-        <%= link_to 'Cursos', courses_path, class: "text-sm font-semibold leading-6 text-black" %>
-        <%= link_to 'Blog', courses_path, class: "text-sm font-semibold leading-6 text-black" %>
+        <%#= link_to 'Cursos', courses_path, class: "text-sm font-semibold leading-6 text-black" %>
+        <%#= link_to 'Blog', courses_path, class: "text-sm font-semibold leading-6 text-black" %>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
         <% if user_signed_in? %>
@@ -33,7 +33,9 @@
   
       </div>
     </nav>
-    <!-- Mobile menu, show/hide based on menu open state. -->
+    <%
+=begin%>
+ <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden" role="dialog" aria-modal="true">
       <!-- Background backdrop, show/hide based on slide-over state. -->
       <div class="fixed inset-0 z-50"></div>
@@ -41,7 +43,7 @@
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+            <img class="h-8 w-auto" src="https://iglesiaspro.com/hubfs/Icon_%20Iglesias%20Pro.png" alt="">
           </a>
           <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
             <span class="sr-only">Close menu</span>
@@ -53,16 +55,23 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Product</a>
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+             <%= link_to 'Home', root_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             </div>
             <div class="py-6">
-              <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+              <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
+                <% if user_signed_in? %>
+                <%= link_to 'Profile', edit_user_registration_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+                <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: '-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50' %>
+
+              <% else %>
+                <%= link_to 'Sign in', new_user_session_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+                <%= link_to 'Signup', new_user_registration_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+<%
+=end%>
   </header>
