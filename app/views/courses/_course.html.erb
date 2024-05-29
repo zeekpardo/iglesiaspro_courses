@@ -1,13 +1,39 @@
-<div class="container divide-gray-200 rounded-lg bg-white text-center">
-      <h3 class=" text-3xl font-medium text-gray-900"><%= course.name %></h3>
-      <%= image_tag course.image_file %>
-      <dd class="text-sm text-gray-500"><%= course.description %></dd>  
-        <dd class="">
-        <% if course.videos.any? %>
-          <span class="items-center rounded-full bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-            <%= link_to "Iniciar curso", course_video_path(course, course.videos.first) %></span>
-        <% end %>
-      </dd>
-</div>
 
+<% @courses.each do |course| %>
+    <article class="flex flex-col items-start justify-between">
+    
+      <div class="relative w-full">
+          <%= image_tag course.image_file, alt: 'Logo', class: 'aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]' %> 
+        <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+      </div>
+      <div class="max-w-xl">
+        <div class="mt-8 flex items-center gap-x-4 text-xs">
+          
+          
+        </div>
+        <div class="group relative">
+          <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            
+              <span class="absolute inset-0"></span>
+              <%= course.name %>
+            
+          </h3>
+          <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"><%= course.description %></p></p>
+        </div>
 
+        <div class="relative mt-8 flex items-center gap-x-4">
+          
+          <div class="text-sm leading-6">
+            <% if course.videos.any? %>
+              <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20"><%= link_to "Ver curso", course %></span>
+              <% else %>
+              <span class="inline-flex items-center  px-2 py-1 text-base font-medium text-grey-700 "><%= "Por venir" %></span>
+            <% end %>
+        </div>
+        <% if current_user&.admin? %>
+              <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20"><%= link_to "Editar Cursro", course %></span>
+            <% end %>
+      </div>
+      
+    </article>
+<% end %>
